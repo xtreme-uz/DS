@@ -5,16 +5,16 @@ import com.company.model.BinaryTreeNode;
 public class BTUtils {
 
     public static BinaryTreeNode toBinaryTree(int...nums) {
-        BinaryTreeNode root = new BinaryTreeNode();
+        BinaryTreeNode root = null;
         for (int num : nums) {
-            add(root, num);
+            root = add(root, num);
         }
         return root;
     }
 
     public static BinaryTreeNode add(BinaryTreeNode root, int value) {
         if (root == null)
-            return new BinaryTreeNode();
+            return new BinaryTreeNode(value);
 
         if (value < root.value) {
             root.left = add(root.left, value);
@@ -39,24 +39,18 @@ public class BTUtils {
         root = deleteValue(root, value);
     }
 
-    private static int findSmallestValue(BinaryTreeNode root) {
-        return root.left == null ? root.value : findSmallestValue(root.left);
-    }
-
-    //Depth-First Search
-    //types InOrder, PreOrder, PostOrder
-    public void traverseInOrder(BinaryTreeNode root) {
+    public static void traverseInOrder(BinaryTreeNode root) {
         if (root != null) {
-            traverseInOrder(root.left);
-            System.out.print(" " + root.value);
-            traverseInOrder(root.right);
+            traverseInOrder(root.left); // left
+            System.out.print(" " + root.value); // self
+            traverseInOrder(root.right); // right
         }
     }
 
     //Breadth-First Search
     //TODO we need to learn queue
 
-    private static BinaryTreeNode deleteValue(BinaryTreeNode root, int value) {
+    public static BinaryTreeNode deleteValue(BinaryTreeNode root, int value) {
         if (root == null) {
             return null;
         }
@@ -83,6 +77,10 @@ public class BTUtils {
             root.right = deleteValue(root.right, value);
             return root;
         }
+    }
+
+    private static int findSmallestValue(BinaryTreeNode root) {
+        return root.left == null ? root.value : findSmallestValue(root.left);
     }
 
 }
