@@ -1,6 +1,9 @@
 package com.company;
 
-import com.company.ds.model.Queue;
+import com.company.ds.model.Graph;
+import com.company.model.Edge;
+
+import java.util.*;
 
 public class Main {
 
@@ -27,19 +30,39 @@ public class Main {
 //        System.out.println(stack.peek());
 
 
-        //TODO of static function
-        Queue queue = new Queue(3);
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
-        System.out.println(queue.get());
-        System.out.println(queue.get());
-        System.out.println(queue.get());
-        System.out.println(queue.get());
-        queue.add(12);
-        System.out.println(queue.get());
-        System.out.println(queue.get());
+//        //TODO of static function
+//        Queue queue = new Queue(3);
+//        queue.add(1);
+//        queue.add(2);
+//        queue.add(3);
+//        queue.add(4);
+//        System.out.println(queue.get());
+//        System.out.println(queue.get());
+//        System.out.println(queue.get());
+//        System.out.println(queue.get());
+//        queue.add(12);
+//        System.out.println(queue.get());
+//        System.out.println(queue.get());
+
+        List<Integer> vertex = Arrays.asList(4, 5, 2, 8, 6);
+        Map<Integer, Integer> edges = new HashMap<>();
+        edges.put(4, 5);
+        edges.put(4, 8);
+        edges.put(4, 2);
+        edges.put(5, 8);
+        edges.put(5, 6);
+        edges.put(6, 8);
+        edges.put(6, 2);
+        edges.put(2, 8);
+        /*
+                4
+           5    8    2
+                6
+         */
+        // 5->2
+        Graph graph = Graph.toGraph(vertex, edges);
+
+
 
     }
 }

@@ -39,6 +39,7 @@ public class BTUtils {
         root = deleteValue(root, value);
     }
 
+    //Depth-First Search
     public static void traverseInOrder(BinaryTreeNode root) {
         if (root != null) {
             traverseInOrder(root.left); // left
@@ -49,6 +50,11 @@ public class BTUtils {
 
     //Breadth-First Search
     //TODO we need to learn queue
+    //        20
+    //    15      25
+    //  3   15  22  30
+
+    //20 15 25 3 15 22 30
 
     public static BinaryTreeNode deleteValue(BinaryTreeNode root, int value) {
         if (root == null) {
